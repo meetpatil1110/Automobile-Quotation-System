@@ -1,9 +1,10 @@
 import { useRef } from 'react'
+import { useDealer } from './DealerContext'
 import html2pdf from 'html2pdf.js'
-import logoImg from '../../LOGO.jpeg'
 import './QuotationPDF.css'
 
 function QuotationPDF({ quotation, onClose }) {
+  const { dealerProfile } = useDealer()
   const contentRef = useRef(null)
 
   const generatePDF = () => {
@@ -53,13 +54,16 @@ function QuotationPDF({ quotation, onClose }) {
           {/* ===== HEADER SECTION ===== */}
           <div className="header-section">
             <div className="company-section">
-              <img src={logoImg} alt="YASH Automobiles Logo" className="logo-image" />
+              {dealerProfile?.logoPreview && (
+                <img src={dealerProfile.logoPreview} alt={dealerProfile.dealershipName} className="logo-image" />
+              )}
               <div className="company-details">
-                <h1>YASH AUTOMOBILES</h1>
+                <h1>{dealerProfile?.dealershipName || 'Dealership Name'}</h1>
                 <div className="company-meta">
-                  <p>S.R.NO.111/1, PLOT NO-19, DONDAICHA ROAD, SHAHADA</p>
-                  <p>Nandurbar, Maharashtra, 425409</p>
-                  <p>Phone: 9422790004, 9289922456</p>
+                  <p>{dealerProfile?.address || ''}</p>
+                  <p>{dealerProfile?.city}, {dealerProfile?.state} {dealerProfile?.zipCode}</p>
+                  <p>Phone: {dealerProfile?.phoneNumbers?.join(', ') || ''}</p>
+                  {dealerProfile?.email && <p>Email: {dealerProfile.email}</p>}
                   <p>Prepared by: {quotation.preparedBy || '___________________'}</p>
                 </div>
               </div>
@@ -175,7 +179,7 @@ function QuotationPDF({ quotation, onClose }) {
           {/* ===== FOOTER ===== */}
           <div className="footer-section">
             <p>If you have any questions about this price quote, please contact</p>
-            <p><strong>YASH AUTOMOBILES</strong> - Phone: 9422790004, 9289922456</p>
+            <p><strong>{dealerProfile?.dealershipName || 'Dealership'}</strong> - Phone: {dealerProfile?.phoneNumbers?.join(', ') || ''}</p>
             <p className="thank-you"><em>Thank You For Your Business!</em></p>
           </div>
         </div>

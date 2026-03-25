@@ -1,7 +1,9 @@
 import { useState } from 'react'
+import { useDealer } from './DealerContext'
 import './PriceListUpload.css'
 
 function PriceListUpload({ onUploadSuccess }) {
+  const { dealerProfile } = useDealer()
   const [file, setFile] = useState(null)
   const [uploading, setUploading] = useState(false)
   const [message, setMessage] = useState('')
@@ -92,15 +94,47 @@ function PriceListUpload({ onUploadSuccess }) {
         {error && <div className="error-message">{error}</div>}
       </div>
 
-      <div className="file-format-card">
-        <h3>Expected Format</h3>
-        <p>Your Excel file should contain columns for:</p>
-        <ul>
-          <li><strong>Model:</strong> Vehicle model name</li>
-          <li><strong>Price:</strong> Price amount</li>
-          <li><strong>Description:</strong> Additional details (optional)</li>
-        </ul>
-        <p className="format-note">First row should be the header with column names</p>
+      <div className="file-format-card dealer-profile-card">
+        <div className="dealer-card-header">
+          <h3>Dealership Profile</h3>
+          {dealerProfile?.logoPreview && (
+            <img src={dealerProfile.logoPreview} alt="Logo" className="dealer-profile-logo" />
+          )}
+        </div>
+        
+        <div className="dealer-profile-info">
+          <div className="profile-item">
+            <span className="profile-label">Dealership Name</span>
+            <p className="profile-value">{dealerProfile?.dealershipName || 'N/A'}</p>
+          </div>
+          
+          <div className="profile-item">
+            <span className="profile-label">Address</span>
+            <p className="profile-value">
+              {dealerProfile?.address || 'N/A'},<br />
+              {dealerProfile?.city}, {dealerProfile?.state} {dealerProfile?.zipCode}
+            </p>
+          </div>
+          
+          <div className="profile-item">
+            <span className="profile-label">Phone</span>
+            <p className="profile-value">{dealerProfile?.phoneNumbers?.join(' | ') || 'N/A'}</p>
+          </div>
+          
+          {dealerProfile?.email && (
+            <div className="profile-item">
+              <span className="profile-label">Email</span>
+              <p className="profile-value">{dealerProfile.email}</p>
+            </div>
+          )}
+          
+          {dealerProfile?.gstNumber && (
+            <div className="profile-item">
+              <span className="profile-label">GST Number</span>
+              <p className="profile-value">{dealerProfile.gstNumber}</p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )

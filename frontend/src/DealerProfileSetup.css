@@ -1,0 +1,356 @@
+/* ===== DEALER SETUP CONTAINER ===== */
+.dealer-setup-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 50%, #1a1f2e 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background decoration */
+.dealer-setup-container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(15, 118, 110, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.dealer-setup-container::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -5%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(100, 116, 139, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.dealer-setup-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  max-width: 750px;
+  width: 100%;
+  padding: 50px;
+  position: relative;
+  z-index: 1;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ===== HEADER ===== */
+.setup-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.setup-header h1 {
+  margin: 0;
+  background: linear-gradient(135deg, #1e293b 0%, #0f766e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.setup-header p {
+  margin: 12px 0 0 0;
+  color: #6b7280;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* ===== FORM STYLES ===== */
+.dealer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.error-message {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  border: 1px solid #fca5a5;
+  border-radius: 10px;
+  padding: 14px 18px;
+  color: #991b1b;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.error-message::before {
+  content: '⚠️';
+}
+
+/* ===== FORM SECTIONS ===== */
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-section h3 {
+  margin: 0;
+  background: linear-gradient(135deg, #1e293b 0%, #0f766e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #f3f4f6;
+}
+
+/* ===== FORM GROUPS ===== */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 18px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1f2937;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-group input {
+  padding: 14px 16px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  background: #f9fafb;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #6366f1;
+  background: white;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+}
+
+.form-group input:disabled {
+  background-color: #f3f4f6;
+  cursor: not-allowed;
+  color: #9ca3af;
+}
+
+/* ===== LOGO UPLOAD ===== */
+.logo-upload-area {
+  margin-top: 15px;
+}
+
+.logo-upload-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+  width: 100%;
+  cursor: pointer;
+  border: 2px dashed #6366f1;
+  border-radius: 12px;
+  padding: 35px 25px;
+  text-align: center;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #f0f9ff 0%, #f5f3ff 100%);
+}
+
+.logo-upload-label:hover {
+  border-color: #8b5cf6;
+  background: linear-gradient(135deg, #ede9fe 0%, #fce7f3 100%);
+  transform: translateY(-2px);
+}
+
+.logo-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 320px;
+  gap: 8px;
+}
+
+.upload-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+  margin: 0;
+  line-height: 1;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.logo-placeholder p {
+  margin: 0;
+  color: #374151;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.35;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.upload-title {
+  font-size: 12px;
+  font-weight: 700;
+  max-width: 100%;
+}
+
+.upload-hint {
+  color: #9ca3af;
+  font-size: 11px;
+  font-style: italic;
+  font-weight: 500;
+  max-width: 100%;
+}
+
+.logo-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 18px;
+}
+
+.logo-preview img {
+  max-height: 140px;
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border: 2px solid #f0f0f0;
+}
+
+.change-logo {
+  margin: 0;
+  background: linear-gradient(135deg, #1e293b 0%, #0f766e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .logo-upload-label {
+    min-height: 150px;
+    padding: 26px 18px;
+  }
+
+  .upload-icon {
+    font-size: 28px;
+  }
+
+  .upload-title {
+    font-size: 11px;
+  }
+
+  .upload-hint {
+    font-size: 10px;
+  }
+}
+
+/* ===== BUTTON ===== */
+.btn-create-profile {
+  padding: 16px 32px;
+  background: linear-gradient(135deg, #1e293b 0%, #0f766e 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 15px;
+  box-shadow: 0 10px 25px rgba(30, 41, 59, 0.3);
+}
+
+.btn-create-profile:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(30, 41, 59, 0.4);
+}
+
+.btn-create-profile:active:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.btn-create-profile:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ===== FOOTER ===== */
+.setup-footer {
+  text-align: center;
+  margin-top: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.setup-footer p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .dealer-setup-card {
+    padding: 35px 25px;
+  }
+
+  .setup-header h1 {
+    font-size: 26px;
+  }
+
+  .setup-header p {
+    font-size: 14px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .form-group input {
+    padding: 12px 14px;
+    font-size: 13px;
+  }
+
+  .btn-create-profile {
+    padding: 14px 28px;
+    font-size: 15px;
+  }
+}
