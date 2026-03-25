@@ -1,0 +1,68 @@
+🔧 IMMEDIATE ACTION REQUIRED
+
+═══════════════════════════════════════════════════════════════════════════
+
+The error you're seeing is because the PRICE LIST hasn't been uploaded yet!
+
+═══════════════════════════════════════════════════════════════════════════
+
+⚡ QUICK FIX (DO THIS NOW)
+
+1. Scroll UP in your browser to see "Upload Price List" section
+   (It's ABOVE the "Generate Quotation" form)
+
+2. Click: "Click to select Excel file"
+
+3. Select: YASH_Automobiles_PriceList.xlsx
+
+4. Click: "Upload File"
+
+5. Wait for green message: "✓ Uploaded 33 items..."
+
+6. See the price table with all 33 vehicles below
+
+7. NOW try the quotation form below the table
+
+═══════════════════════════════════════════════════════════════════════════
+
+📊 IMPORTANT
+
+The quotation form needs DATA to work:
+  ✗ Empty database = Error (what you saw)
+  ✓ With uploaded file = Works perfectly
+
+First upload the price list, THEN generate quotations!
+
+═══════════════════════════════════════════════════════════════════════════
+
+🎯 ORDER OF OPERATIONS
+
+1. ☐ Upload Price List (MUST DO THIS FIRST)
+2. ☐ See the price table appear (33 vehicles)
+3. ☐ THEN use Generate Quotation form
+4. ☐ It will work!
+
+═══════════════════════════════════════════════════════════════════════════
+
+If still having issues after upload, check:
+
+Terminal - Backend Running?
+  ps aux | grep "node server.js"
+  
+Should show: node server.js running
+
+Terminal - Test Backend
+  curl http://localhost:3000/
+  
+Should return: "Quotation Server Running"
+
+═══════════════════════════════════════════════════════════════════════════
+
+Browser - Check Console
+  F12 → Console tab → Look for errors
+  
+This will show the actual problem!
+
+═══════════════════════════════════════════════════════════════════════════
+
+Your system is working correctly - it just needs the price list file uploaded!
